@@ -1,0 +1,164 @@
+/* ============ Font: Plus Jakarta Sans (bundled in /fonts, works offline) ============ */
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============ Tokens: green and white ============ */
+:root {
+  --green-900: #0f3d26;
+  --green-700: #17653f;
+  --green-600: #1f7a4d;   /* primary */
+  --green-500: #2e9a63;
+  --green-100: #e3f4ea;
+  --green-50:  #f4fbf7;
+  --white: #ffffff;
+  --text: #15251c;
+  --text-soft: #4a5d52;
+  --line: #d8e5dd;
+  --error: #b42318;
+  --error-bg: #fef3f2;
+  --radius: 10px;
+  --shadow: 0 1px 2px rgba(15, 61, 38, 0.06), 0 8px 24px rgba(15, 61, 38, 0.06);
+}
+
+* { box-sizing: border-box; }
+html { font-size: 112.5%; } /* 18px */
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Plus Jakarta Sans", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--green-50);
+}
+
+[hidden] { display: none !important; }
+h1, h2 { margin-top: 0; line-height: 1.2; letter-spacing: -0.025em; color: var(--green-900); font-weight: 800; }
+h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+h2 { font-size: 1.2rem; }
+
+/* ============ Skip link ============ */
+.skip-link { position: absolute; left: -999px; top: 0; z-index: 10; background: var(--green-900); color: var(--white); padding: 0.6rem 1rem; }
+.skip-link:focus { left: 0; }
+
+/* ============ Header ============ */
+.site-header { background: var(--white); border-bottom: 1px solid var(--line); }
+.header-inner {
+  max-width: 1400px; margin: 0 auto; padding: 0.7rem 2.5rem;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;
+}
+.logo { font-weight: 700; font-size: 1.15rem; color: var(--green-700); text-decoration: none; letter-spacing: -0.01em; }
+.nav-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.25rem; }
+.nav-list a {
+  display: block; padding: 0.45rem 0.9rem; border-radius: 8px;
+  color: var(--text-soft); text-decoration: none; font-weight: 500;
+}
+.nav-list a:hover { background: var(--green-100); color: var(--green-900); }
+.nav-list a[aria-current="page"] { background: var(--green-600); color: var(--white); }
+
+/* ============ Layout ============ */
+main { flex: 1; width: 100%; max-width: 1400px; margin: 0 auto; padding: 2rem 2.5rem; }
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2.25rem 3rem;
+  margin-bottom: 1.25rem;
+}
+.lead { font-size: 1.05rem; margin: 0 0 1.5rem; color: var(--text-soft); }
+
+/* ============ Buttons ============ */
+.btn {
+  display: inline-block; font: inherit; font-weight: 600;
+  padding: 0.6rem 1.3rem; border-radius: 8px; border: 1.5px solid transparent;
+  cursor: pointer; text-decoration: none; transition: background 0.15s, border-color 0.15s;
+}
+.btn-primary { background: var(--green-600); color: var(--white); }
+.btn-primary:hover { background: var(--green-700); }
+.btn-secondary { background: var(--white); color: var(--green-700); border-color: var(--green-600); }
+.btn-secondary:hover { background: var(--green-100); }
+
+/* ============ Form ============ */
+.form-group { margin-bottom: 1rem; position: relative; }
+label { display: block; font-weight: 600; margin-bottom: 0.3rem; }
+.required { color: var(--error); }
+.hint { font-size: 0.85rem; line-height: 1.4; color: var(--text-soft); margin: 0.25rem 0 0; }
+
+input, select {
+  width: 100%; height: 2.9rem; font: inherit; color: var(--text);
+  padding: 0.55rem 0.8rem; background: var(--white);
+  border: 1.5px solid #b9cdc0; border-radius: 8px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+input:hover, select:hover { border-color: var(--green-500); }
+input::placeholder { color: #7c8f84; }
+
+input.invalid, select.invalid { border-color: var(--error); background: var(--error-bg); }
+.error { display: block; min-height: 1.1rem; margin-top: 0.2rem; color: var(--error); font-size: 0.9rem; font-weight: 600; }
+
+.button-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.5rem; }
+
+@media (min-width: 801px) {
+  #registerForm { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; align-items: start; }
+  #registerForm .form-group:first-child,
+  #registerForm .button-row { grid-column: 1 / -1; }
+}
+
+/* ============ Confirmation ============ */
+.confirmation { border-left: 5px solid var(--green-600); background: var(--green-50); }
+.confirmation h2 { color: var(--green-700); }
+.confirmation dl { margin: 1rem 0 0; display: grid; grid-template-columns: max-content 1fr; gap: 0.35rem 1rem; }
+.confirmation dt { font-weight: 600; color: var(--text-soft); }
+.confirmation dd { margin: 0; }
+
+/* ============ Dialog ============ */
+dialog {
+  width: min(90vw, 440px); padding: 2rem; text-align: center;
+  border: 1px solid var(--line); border-radius: 14px;
+  background: var(--white); color: var(--text);
+  box-shadow: 0 20px 50px rgba(15, 61, 38, 0.25);
+}
+dialog::backdrop { background: rgba(15, 61, 38, 0.45); }
+dialog p { margin: 0 0 1.5rem; color: var(--text-soft); }
+dialog .button-row { justify-content: center; }
+
+/* ============ Keyboard focus ============ */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, .confirmation:focus-visible {
+  outline: 3px solid var(--green-500);
+  outline-offset: 2px;
+}
+input:focus, select:focus { border-color: var(--green-600); box-shadow: 0 0 0 3px var(--green-100); }
+
+/* ============ Footer ============ */
+.site-footer { text-align: center; padding: 1.25rem; background: var(--white); border-top: 1px solid var(--line); color: var(--text-soft); font-size: 0.9rem; }
+.site-footer p { margin: 0; }
+
+/* ============ Mobile ============ */
+@media (max-width: 600px) {
+  h1 { font-size: 1.6rem; }
+  .header-inner { flex-direction: column; align-items: flex-start; }
+  .card { padding: 1.25rem; }
+  main { padding: 1.5rem 1rem; }
+  .button-row .btn { width: 100%; text-align: center; }
+  .confirmation dl { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* Large desktop screens: three columns so the whole form fits on one screen */
+@media (min-width: 1200px) {
+  #registerForm { grid-template-columns: repeat(3, 1fr); }
+  #registerForm .form-group:first-child { grid-column: 1 / 3; }
+  /* put the Student ID hint on the label line so it does not make the row taller */
+  #registerForm .hint { position: absolute; top: 0.15rem; right: 0; margin: 0; }
+}
+@media (max-width: 1199px) and (min-width: 601px) { .card { padding: 2.25rem; } }
