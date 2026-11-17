@@ -1,113 +1,137 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register | Student Registration</title>
   <link rel="stylesheet" href="style.css">
+  <script>try{document.documentElement.setAttribute("data-theme",localStorage.getItem("sr-theme")==="dark"?"dark":"light")}catch(e){}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to main content</a>
+  <a class="skip" href="#main">Skip to main content</a>
 
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="logo" href="index.html">Student Registration</a>
-      <nav aria-label="Main navigation">
-        <ul class="nav-list">
+  <header class="top">
+    <div class="bar">
+      <a class="logo" href="index.html"><i aria-hidden="true">&#9998;</i>Student Registration</a>
+      <div class="bar-r">
+        <nav aria-label="Main navigation">
+          <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="register.html" aria-current="page">Register</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+        <button type="button" class="theme" id="themeBtn" aria-pressed="false" aria-label="Dark mode"><span class="ico" id="themeIco" aria-hidden="true">&#9728;</span><span id="themeLbl">Light</span></button>
+      </div>
     </div>
   </header>
 
-  <main id="main">
-    <section class="card">
-      <h1>Student Registration</h1>
-      <p class="lead">Fields marked with <span class="required">*</span> are required.</p>
+  <main id="main" tabindex="-1">
+    <section>
+  <p class="crumb"><a href="index.html">Home</a> / Register</p>
+  <h1>Student registration</h1>
+  <p class="lead">Fields marked <span class="req">*</span> are required. Use <button type="button" class="btn-link" id="sample">sample data</button> to try the form quickly.</p>
 
-      <form id="registerForm" novalidate>
-        <div class="form-group">
-          <label for="fullName">Full name <span class="required">*</span></label>
-          <input type="text" id="fullName" name="fullName" autocomplete="name" placeholder="e.g. Juan Dela Cruz" aria-describedby="fullNameError">
-          <span class="error" id="fullNameError" role="alert"></span>
+  <div class="layout" id="formLayout">
+    <form class="panel" id="regForm" novalidate>
+      <div class="summary-err" id="errSummary" role="alert" tabindex="-1" hidden>
+        <h2 id="errTitle"></h2><ul id="errList"></ul>
+      </div>
+
+      <fieldset>
+        <legend>About you</legend>
+        <div class="field full" data-f="fullName">
+          <label for="fullName">Full name <span class="req" aria-hidden="true">*</span></label>
+          <div class="wrap"><input id="fullName" name="fullName" autocomplete="name" placeholder="e.g. Juan Dela Cruz" aria-describedby="fullName-m" required></div>
+          <p class="msg" id="fullName-m"></p>
         </div>
-
-        <div class="form-group">
-          <label for="studentId">Student ID <span class="required">*</span></label>
-          <input type="text" id="studentId" name="studentId" placeholder="e.g. 2026-00123" aria-describedby="studentIdHint studentIdError">
-          <p class="hint" id="studentIdHint">5 to 15 letters, numbers, or dashes</p>
-          <span class="error" id="studentIdError" role="alert"></span>
+        <div class="row">
+          <div class="field" data-f="studentId">
+            <label for="studentId">Student ID <span class="req" aria-hidden="true">*</span></label>
+            <div class="wrap"><input id="studentId" name="studentId" placeholder="e.g. 2026-00123" autocapitalize="characters" aria-describedby="studentId-h studentId-m" required></div>
+            <p class="hint" id="studentId-h">5–15 letters, numbers or dashes.</p>
+            <p class="msg" id="studentId-m"></p>
+          </div>
+          <div class="field" data-f="email">
+            <label for="email">Email address <span class="req" aria-hidden="true">*</span></label>
+            <div class="wrap"><input id="email" name="email" type="email" autocomplete="email" placeholder="e.g. juan@example.com" aria-describedby="email-h email-m" required></div>
+            <p class="hint" id="email-h">We’ll send your confirmation here.</p>
+            <p class="msg" id="email-m"></p>
+            <p class="suggest" id="emailSug" hidden></p>
+          </div>
         </div>
+      </fieldset>
 
-        <div class="form-group">
-          <label for="email">Email address <span class="required">*</span></label>
-          <input type="email" id="email" name="email" autocomplete="email" placeholder="e.g. juan@example.com" aria-describedby="emailError">
-          <span class="error" id="emailError" role="alert"></span>
+      <fieldset>
+        <legend>Your program</legend>
+        <div class="row">
+          <div class="field" data-f="course">
+            <label for="course">Course <span class="req" aria-hidden="true">*</span></label>
+            <div class="wrap"><select id="course" name="course" aria-describedby="course-m" required>
+              <option value="">Select your course</option>
+              <option>BS Information Technology</option><option>BS Computer Science</option>
+              <option>BS Information Systems</option><option>BS Business Administration</option><option>BS Education</option>
+            </select></div>
+            <p class="msg" id="course-m"></p>
+          </div>
+          <div class="field" data-f="yearLevel">
+            <label for="yearLevel">Year level <span class="req" aria-hidden="true">*</span></label>
+            <div class="wrap"><select id="yearLevel" name="yearLevel" aria-describedby="yearLevel-m" required>
+              <option value="">Select your year level</option>
+              <option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option>
+            </select></div>
+            <p class="msg" id="yearLevel-m"></p>
+          </div>
         </div>
+      </fieldset>
 
-        <div class="form-group">
-          <label for="course">Course <span class="required">*</span></label>
-          <select id="course" name="course" aria-describedby="courseError">
-            <option value="">-- Select your course --</option>
-            <option>BS Information Technology</option>
-            <option>BS Computer Science</option>
-            <option>BS Information Systems</option>
-            <option>BS Business Administration</option>
-            <option>BS Education</option>
-          </select>
-          <span class="error" id="courseError" role="alert"></span>
-        </div>
-
-        <div class="form-group">
-          <label for="yearLevel">Year level <span class="required">*</span></label>
-          <select id="yearLevel" name="yearLevel" aria-describedby="yearLevelError">
-            <option value="">-- Select your year level --</option>
-            <option>1st Year</option>
-            <option>2nd Year</option>
-            <option>3rd Year</option>
-            <option>4th Year</option>
-          </select>
-          <span class="error" id="yearLevelError" role="alert"></span>
-        </div>
-
-        <div class="button-row">
-          <button type="submit" class="btn btn-primary">Submit</button>
-          <button type="button" class="btn btn-secondary" id="clearBtn">Clear</button>
-        </div>
-      </form>
-    </section>
-
-    <!-- Confirmation area: hidden until a successful submit -->
-    <section class="card confirmation" id="confirmation" tabindex="-1" aria-live="polite" hidden>
-      <h2>Registration successful!</h2>
-      <p>Thank you, <strong id="outName"></strong>. Here is a summary of your registration:</p>
-      <dl>
-        <dt>Student ID:</dt><dd id="outId"></dd>
-        <dt>Email:</dt><dd id="outEmail"></dd>
-        <dt>Course:</dt><dd id="outCourse"></dd>
-        <dt>Year level:</dt><dd id="outYear"></dd>
-      </dl>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <p>&copy; 2026 Group Carmonas &middot; Student Registration Activity</p>
-  </footer>
-
-  <!-- Confirmation popup: opened by script.js before Submit and Clear -->
-  <dialog id="confirmDialog" aria-labelledby="confirmTitle">
-    <form method="dialog">
-      <h2 id="confirmTitle">Please confirm</h2>
-      <p id="confirmMessage"></p>
-      <div class="button-row">
-        <button type="submit" value="no" class="btn btn-secondary">Cancel</button>
-        <button type="submit" value="yes" class="btn btn-primary">Yes</button>
+      <div class="actions">
+        <button type="submit" class="btn btn-p">Submit registration</button>
+        <button type="button" class="btn btn-s" id="clearBtn">Clear form</button>
       </div>
     </form>
-  </dialog>
+
+    <aside class="slip" aria-label="Registration summary">
+      <div class="slip-h">
+        <h2>Your registration</h2>
+        <p id="progText" aria-live="polite">0 of 5 fields complete</p>
+        <div class="prog" aria-hidden="true"><span id="progBar"></span></div>
+      </div>
+      <dl>
+        <dt>Name</dt><dd data-o="fullName" class="empty">Not entered yet</dd>
+        <dt>Student ID</dt><dd data-o="studentId" class="empty">Not entered yet</dd>
+        <dt>Email</dt><dd data-o="email" class="empty">Not entered yet</dd>
+        <dt>Course</dt><dd data-o="course" class="empty">Not selected yet</dd>
+        <dt>Year level</dt><dd data-o="yearLevel" class="empty">Not selected yet</dd>
+      </dl>
+      <p class="slip-note">Nothing is sent until you press Submit.</p>
+    </aside>
+  </div>
+
+  <!-- Confirmation area: hidden until a successful submit -->
+  <div class="panel success" id="success" tabindex="-1" aria-live="polite" hidden>
+    <span class="badge" aria-hidden="true">✓</span>
+    <h1 style="font-size:1.6rem">Registration submitted</h1>
+    <p style="color:var(--soft);margin:.4rem 0 0">Thank you, <strong id="sName"></strong>. Keep this reference number.</p>
+    <div class="ref" id="sRef"></div>
+    <dl>
+      <dt>Student ID</dt><dd id="sId"></dd>
+      <dt>Email</dt><dd id="sEmail"></dd>
+      <dt>Course</dt><dd id="sCourse"></dd>
+      <dt>Year level</dt><dd id="sYear"></dd>
+    </dl>
+    <div class="actions">
+      <button type="button" class="btn btn-p" id="againBtn">Register another student</button>
+      <button type="button" class="btn btn-s" id="editBtn">Edit my details</button>
+      <button type="button" class="btn btn-s" id="copyBtn">Copy reference</button>
+      <button type="button" class="btn btn-s" id="printBtn">Print</button>
+    </div>
+  </div>
+</section>
+  </main>
+
+  <footer>&copy; 2026 Group Carmonas &middot; Student Registration Activity</footer>
 
   <script src="script.js"></script>
 </body>

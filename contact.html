@@ -1,41 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact | Student Registration</title>
   <link rel="stylesheet" href="style.css">
+  <script>try{document.documentElement.setAttribute("data-theme",localStorage.getItem("sr-theme")==="dark"?"dark":"light")}catch(e){}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to main content</a>
+  <a class="skip" href="#main">Skip to main content</a>
 
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="logo" href="index.html">Student Registration</a>
-      <nav aria-label="Main navigation">
-        <ul class="nav-list">
+  <header class="top">
+    <div class="bar">
+      <a class="logo" href="index.html"><i aria-hidden="true">&#9998;</i>Student Registration</a>
+      <div class="bar-r">
+        <nav aria-label="Main navigation">
+          <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="register.html">Register</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html" aria-current="page">Contact</a></li>
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+        <button type="button" class="theme" id="themeBtn" aria-pressed="false" aria-label="Dark mode"><span class="ico" id="themeIco" aria-hidden="true">&#9728;</span><span id="themeLbl">Light</span></button>
+      </div>
     </div>
   </header>
 
-  <main id="main">
-    <section class="card">
-      <h1>Contact Us</h1>
-      <p class="lead">Need help with your registration? Reach out to the registrar's office.</p>
-      <p><strong>Email:</strong> registrar@example.com</p>
+  <main id="main" tabindex="-1">
+    <div class="card">
+      <h1>Contact us</h1>
+      <p class="lead">Need help with your registration? Reach the registrar&rsquo;s office.</p>
+      <p><strong>Email:</strong> <a href="mailto:registrar@example.com">registrar@example.com</a></p>
       <p><strong>Phone:</strong> (02) 1234-5678</p>
       <p><strong>Office hours:</strong> Monday to Friday, 8:00 AM to 5:00 PM</p>
       <p class="hint">These are sample details for the activity.</p>
-    </section>
+    </div>
   </main>
 
-  <footer class="site-footer">
-    <p>&copy; 2026 Group Carmonas &middot; Student Registration Activity</p>
-  </footer>
+  <footer>&copy; 2026 Group Carmonas &middot; Student Registration Activity</footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

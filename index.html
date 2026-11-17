@@ -1,48 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home | Student Registration</title>
   <link rel="stylesheet" href="style.css">
+  <script>try{document.documentElement.setAttribute("data-theme",localStorage.getItem("sr-theme")==="dark"?"dark":"light")}catch(e){}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to main content</a>
+  <a class="skip" href="#main">Skip to main content</a>
 
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="logo" href="index.html">Student Registration</a>
-      <nav aria-label="Main navigation">
-        <ul class="nav-list">
+  <header class="top">
+    <div class="bar">
+      <a class="logo" href="index.html"><i aria-hidden="true">&#9998;</i>Student Registration</a>
+      <div class="bar-r">
+        <nav aria-label="Main navigation">
+          <ul>
           <li><a href="index.html" aria-current="page">Home</a></li>
           <li><a href="register.html">Register</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+        <button type="button" class="theme" id="themeBtn" aria-pressed="false" aria-label="Dark mode"><span class="ico" id="themeIco" aria-hidden="true">&#9728;</span><span id="themeLbl">Light</span></button>
+      </div>
     </div>
   </header>
 
-  <main id="main">
-    <section class="card">
-      <h1>Welcome, Student!</h1>
-      <p class="lead">Register for the new term in a few simple steps.</p>
-      <p>You will need your full name, student ID, email address, course, and year level. It takes about one minute.</p>
-      <a class="btn btn-primary" href="register.html">Start Registration</a>
-    </section>
-
-    <section class="card">
-      <h2>How it works</h2>
-      <ol>
-        <li>Open the <strong>Register</strong> page.</li>
-        <li>Fill in the required fields (marked with *).</li>
-        <li>Press <strong>Submit</strong> and read your confirmation.</li>
+  <main id="main" tabindex="-1">
+    <div class="card">
+      <h1>Register for the new term</h1>
+      <p class="lead">It takes about one minute. You&rsquo;ll see your details build up as you type, and you can review everything before you finish.</p>
+      <a class="btn btn-p" href="register.html" style="display:inline-block;text-decoration:none">Start registration</a>
+      <ol class="steps">
+        <li><b>Fill in 5 fields</b>Name, student ID, email, course and year level.</li>
+        <li><b>Check your summary</b>The panel beside the form shows what you entered.</li>
+        <li><b>Submit</b>You get a reference number to keep.</li>
       </ol>
-    </section>
+    </div>
   </main>
 
-  <footer class="site-footer">
-    <p>&copy; 2026 Group Carmonas &middot; Student Registration Activity</p>
-  </footer>
+  <footer>&copy; 2026 Group Carmonas &middot; Student Registration Activity</footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
